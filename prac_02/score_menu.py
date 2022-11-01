@@ -3,7 +3,6 @@ CP1404 - Practical 2
 """
 
 GAME_MENU = "(G)et a valid score, (P)rint result, (S)how stars, (Q)uit"
-MENU_CHOICES = ["G", "P", "S", "Q"]
 
 
 def main():
@@ -20,14 +19,19 @@ def main():
         elif player_choice == "P":
             if game_result == "":
                 print("You haven't provided a score yet")
-                score = get_score()
-                print(evaluate_score(score))
-            else:
-                evaluate_score(game_result)
-                print("Your score is", game_result)
+                result = get_score()
+                game_result = result
+                print(evaluate_score(game_result))
         else:
-            print(score_as_stars(game_result))
-    print("Thank you, have a nice day")
+            evaluate_score(game_result)
+            print("Your score is", result)
+    else:
+        print(score_as_stars(game_result))
+
+
+MENU_CHOICES = ["G", "P", "S", "Q"]
+
+print("Thank you, have a nice day")
 
 
 def score_as_stars(game_result):
@@ -49,7 +53,7 @@ def get_valid_menu_choice():
 def get_score():
     """Get a valid score"""
     result = float(input("Enter score: "))
-    if result < 0 or result > 100:
+    if result <= 0 or result >= 100:
         print("Invalid score")
         result = float(input("Enter score: "))
     return result
@@ -62,8 +66,7 @@ def evaluate_score(result):
         result = "Passable"
     else:
         result = "Bad"
-
-
+    return result
 
 
 main()
