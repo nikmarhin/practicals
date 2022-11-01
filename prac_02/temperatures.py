@@ -9,6 +9,11 @@ Q - Quit"""
 def main():
     print(MENU)
     choice = input(">>> ").upper()
+    get_valid_input(choice)
+    print("Thank you.")
+
+
+def get_valid_input(choice):
     while choice != "Q":
         if choice == "C":
             celsius = float(input("Celsius: "))
@@ -22,7 +27,6 @@ def main():
             print("Invalid option")
         print(MENU)
         choice = input(">>> ").upper()
-    print("Thank you.")
 
 
 main()
