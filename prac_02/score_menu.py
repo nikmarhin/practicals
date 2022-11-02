@@ -3,6 +3,7 @@ CP1404 - Practical 2
 """
 
 GAME_MENU = "(G)et a valid score, (P)rint result, (S)how stars, (Q)uit"
+MENU_CHOICES = ["G", "P", "S", "Q"]
 
 
 def main():
@@ -19,26 +20,29 @@ def main():
         elif player_choice == "P":
             if game_result == "":
                 print("You haven't provided a score yet")
-                result = get_score()
-                game_result = result
+                game_result = get_score()
                 print(evaluate_score(game_result))
+            else:
+                print("Your score is", evaluate_score(game_result))
+                print(GAME_MENU)
+                player_choice = get_valid_menu_choice()
         else:
-            evaluate_score(game_result)
-            print("Your score is", result)
-    else:
-        print(score_as_stars(game_result))
-
-
-MENU_CHOICES = ["G", "P", "S", "Q"]
-
-print("Thank you, have a nice day")
+            if game_result == "":
+                print("You haven't provided a score yet")
+                game_result = get_score()
+            else:
+                print(score_as_stars(game_result))
+                print(GAME_MENU)
+                player_choice = get_valid_menu_choice()
+    print("Thank you, have a nice day")
 
 
 def score_as_stars(game_result):
-    if game_result == None:
+    if game_result == "":
         print("You haven't provided a score yet")
         print(get_score)
-    print("Your score is", "*" * len(game_result))
+    else:
+        print("Your score is", "*" * len(game_result))
 
 
 def get_valid_menu_choice():
@@ -52,21 +56,21 @@ def get_valid_menu_choice():
 
 def get_score():
     """Get a valid score"""
-    result = float(input("Enter score: "))
-    if result <= 0 or result >= 100:
+    result = int(input("Enter score: "))
+    if result < 0 or result > 100:
         print("Invalid score")
-        result = float(input("Enter score: "))
+        result = int(input("Enter score: "))
     return result
 
 
-def evaluate_score(result):
-    if result >= 90:
-        result = "Excellent"
-    elif result >= 50:
-        result = "Passable"
+def evaluate_score(game_result):
+    if game_result >= 90:
+        outcome = "excellent"
+    elif game_result >= 50:
+        outcome = "passable"
     else:
-        result = "Bad"
-    return result
+        outcome = "bad"
+    return outcome
 
 
 main()
