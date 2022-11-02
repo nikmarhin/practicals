@@ -34,7 +34,7 @@ def main():
                 print(score_as_stars(game_result))
                 print(GAME_MENU)
                 player_choice = get_valid_menu_choice()
-    print("Thank you, have a nice day")
+    print("Thank you, have a nice day!")
 
 
 def score_as_stars(game_result):
