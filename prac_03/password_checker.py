@@ -33,7 +33,7 @@ def is_valid_password(password):
     count_upper = 0
     count_digit = 0
     count_special = 0
-    if len(password) >= MIN_LENGTH:
+    if len(password) >= MIN_LENGTH and len(password) <= MAX_LENGTH:
         for char in password:
             if char.islower:
                 count_lower += 1
@@ -56,8 +56,7 @@ def is_valid_password(password):
                 print("Your password must contain a special character")
                 SPECIAL_CHARS_REQUIRED = True
     pwd_length: int = count_lower + count_upper + count_digit + count_special
-    if count_lower >= 1 and count_upper >= 1 and count_digit >= 1 and count_special >= 1 and (pwd_length > MIN_LENGTH
-    and pwd_length < MAX_LENGTH):
+    if count_lower >= 1 and count_upper >= 1 and count_digit >= 1 and count_special >= 1 and (pwd_length > MIN_LENGTH and pwd_length < MAX_LENGTH):
         print(f"Valid password = {password}")
 
 
