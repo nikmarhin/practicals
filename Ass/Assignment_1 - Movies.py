@@ -1,4 +1,76 @@
-"""Assignment 1"""
+"""
+CP1404 2022 - Assignment 1
+Movies To Watch 1.0
+Student Name: Nikolas Marhin
+Pseudocode:
+
+MAIN_MENU = parent menu
+MENU_CHOICES = list of menu choices
+MOVIE_CATEGORIES = list of categories
+movies_list = list of movies
+watched_list = list of unwatched movies
+UNWATCHED_MOVIES = len(movies_list) - len(watched_list)
+
+main function
+    display intro message
+    load cas and import movies into movies list
+    display main menu
+    get user choice
+    while user choice is not quit
+        if user choice is display
+            run display function
+            repeat menu
+        elif user choice is to add
+            run add movie function
+        elif user choice is watch
+            run watch movie function
+    else
+        display farewell message
+        write current movie list to file and save file
+
+
+define watch menu function
+    display intro message to the watch menu
+    get user input for movie number
+    if number is less than 1 or more than length of movie list
+        display error
+        repeat input
+    else
+        append user input to watched movie list
+        display movie has been watched
+
+
+define display report function
+    i = 0
+    for movie in movies list
+        display iterate through movies list to display all elements
+        display x movies watched, x movies still to watch - referencing the constant of UNWATCHED_MOVIES
+
+
+define add movie function
+    create a blank list for 'movie'
+    get title input from user
+        if title is blank display error
+    get year input from user
+        error check it is a valid input, ie. more than 0 and must be an integer
+    display categories list, referencing CATEGORIES constant
+    get category input from user
+    if category input is not in CATEGORIES constant display error
+        repeat category input from user
+    append title, year, category to blank movie list
+    append movies list with movie
+    append watched list with movie
+    display movie added to list
+
+
+define get valid menu choice function
+    get user input
+    while user input is not in MENU CHOICES, referencing constant
+        display error
+        repeat user input
+    return user choice
+"""
+
 
 MAIN_MENU = "D - Display movies \nA - Add new movie \nW - Watch a movie \nQ - Quit"
 MENU_CHOICES = ["D", "A", "W", "Q"]
