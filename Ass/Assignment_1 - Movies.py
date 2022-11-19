@@ -5,6 +5,7 @@ MENU_CHOICES = ["D", "A", "W", "Q"]
 MOVIE_CATEGORIES = ["Action", "Comedy", "Documentary", "Drama", "Thriller", "Other"]
 movies_list = [["Jurassic Park", 1996, "Action"], ["The Stranger", 2022, "Drama"], ["Interstellar", 2018, "Sci-Fi"]]
 watched_list = []
+UNWATCHED_MOVIES = len(movies_list) - len(watched_list)
 
 
 def main():
@@ -17,9 +18,6 @@ def main():
             display_movies()
             print(MAIN_MENU)
             user_choice = get_valid_menu_choice()
-            # display a formatted (lined up) list of all the movies with their details (unwatched movies have * next to them) and a count of these movies
-            # print(displayed movies report)
-            # print(x movies watched, x movies still to watch)
         elif user_choice == "A":
             add_movie()
             print(MAIN_MENU)
@@ -28,8 +26,6 @@ def main():
             watch_menu()
             print(MAIN_MENU)
             user_choice = get_valid_menu_choice()
-        # prompt the user to choose one movie by number (error-checked), then change that movie's status to watched
-        # if no movies are unwatched, then display "No more movies to watch!"
     else:
         print("Have a nice day :)")
         # saves the movies to the CSV file, overwriting file contents
@@ -37,6 +33,7 @@ def main():
 
 
 def watch_menu():
+    """Mark a movie as watched"""
     print("Enter the number of a movie to mark as watched")
     number = int(input(">>> "))
     if number < 1 or number > len(movies_list):
@@ -50,6 +47,7 @@ def watch_menu():
 
 
 def display_movies():
+    """Display the current movie list"""
     i = 0
     for movie in movies_list:
         row = movie
@@ -59,10 +57,12 @@ def display_movies():
               + "{:^6}".format(str(row[1]))
               + "({})".format(str((row[2]))))
         i += 1
+    print(f"{(len(watched_list))} movies watched {UNWATCHED_MOVIES} movies still to watch")
     return None
 
 
 def add_movie():
+    """Add movie to the movies list"""
     movie = []
     title = input("Title: ")
     if title == "":
@@ -86,6 +86,7 @@ def add_movie():
     movie.append(year)
     movie.append(category)
     movies_list.append(movie)
+    watched_list.append(movie)
     print(movie[0] + f" ({category} from {year}) added to the movie list.")
     return None
 
