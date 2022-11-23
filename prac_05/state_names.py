@@ -23,7 +23,7 @@ try:
         print("Invalid short state")
         state_code = input("Enter short state: ").upper()
         print(state_code, "is", CODE_TO_NAME[state_code])
-except ValueError:
+except None:
     print("Invalid short state")
 
 
