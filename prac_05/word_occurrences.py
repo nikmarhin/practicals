@@ -1,7 +1,7 @@
 """
 Word Occurrences
 Estimate: 20 minutes
-Actual:  16  minutes
+Actual: 16 minutes
 text is this is a collection of words of nice words this is a fun thing it is
 """
 
