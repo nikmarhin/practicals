@@ -1,4 +1,7 @@
-"""CP1404/CP5632 Practical - Car class."""
+"""CP1404/CP5632 Practical - Car class.
+Estimated time - 60
+Actual time - 75
+"""
 
 
 class Car:

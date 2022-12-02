@@ -1,4 +1,5 @@
-"""CP1404/CP5632 Practical - Used cars."""
+"""CP1404/CP5632 Practical 6
+Used cars."""
 
 from prac_06.car import Car
 
